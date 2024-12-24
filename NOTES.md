@@ -7,3 +7,14 @@
 ```bash
     npx prisma migrate dev --name init
  ```
+
+- To generate prisma client
+
+```
+npm i @prisma/client
+```bash
+but when we want to manually want to generate our client based on our present setup
+
+```bash
+npx prisma generate
+```
