@@ -18,3 +18,6 @@ but when we want to manually want to generate our client based on our present se
 ```bash
 npx prisma generate
 ```
+
+NOTE:
+ - Must have only one datasource provider but may have multiple generators depending on requirements
