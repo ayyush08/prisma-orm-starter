@@ -14,7 +14,7 @@ async function main(){
     // console.log(user)
 
     //Fina all users
-    // console.log(await prisma.user.findMany());
+    console.log(await prisma.user.findMany());
     
     
 }

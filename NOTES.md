@@ -10,9 +10,9 @@
 
 - To generate prisma client
 
-```
-npm i @prisma/client
 ```bash
+npm i @prisma/client
+```
 but when we want to manually want to generate our client based on our present setup
 
 ```bash
@@ -21,3 +21,12 @@ npx prisma generate
 
 NOTE:
  - Must have only one datasource provider but may have multiple generators depending on requirements
+
+
+ Field types:
+ integer,string,boolean,BigInt,float,datetime,json,bytes,unsupported
+
+ type modifiers
+ ?
+ []
+ 
