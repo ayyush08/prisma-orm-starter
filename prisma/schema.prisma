@@ -15,34 +15,42 @@ datasource db {
 
 model User {
   id             String          @id @default(uuid())
+  age           Int
   name           String
   email          String
   isAdmin        Boolean
-  preferences    Json
-  blob           Bytes
-  blob2          Unsupported("")
+  // preferences    Json
+  // blob           Bytes
+  // blob2          Unsupported("")
   writtenPosts   Post[]          @relation("WrittenPosts")
   favoritePosts  Post[]          @relation("FavoritePosts")
-  UserPreference UserPreference?
+  userPreference UserPreference?
+
+  @@unique([age,name]) // cannot have two users with same age and name
+  @@index([email]) // index for emails for faster search
 }
 
 //one to many relations and multiple one to many
 model Post {
   id            String     @id @default(uuid())
-  rating        Float
-  createdAt     DateTime
-  updatedAt     DateTime
+  title         String
+  averageRating        Float
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime   @updatedAt
   author        User       @relation("WrittenPosts", fields: [authorId], references: [id])
   authorId      String
   favoritedBy   User?      @relation("FavoritePosts", fields: [favoritedById], references: [id])
   favoritedById String?
   categories    Category[]
+
+  // @@id([title,authorId]) - here we are saying that out title and authorId together are unique i.e., they represent together an id
 }
 
 //many to many - automatically prismaa joins tables for us in this 
 model Category {
   id    String @id @default(uuid())
   posts Post[]
+  name String @unique
 }
 
 // one to one

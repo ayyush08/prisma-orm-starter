@@ -26,7 +26,20 @@ NOTE:
  Field types:
  integer,string,boolean,BigInt,float,datetime,json,bytes,unsupported
 
- type modifiers
+Type modifiers
  ?
  []
- 
+
+
+Field level Attributes:
+@id - to specify a field as primary key
+@default - to specify a default value for a field
+@unique - to specify a field as unique
+@relation - to specify a relation between two models
+@updatedAt - to specify a field that will be updated automatically when a record is updated
+@default(now()) - to specify a field that will be updated automatically when a record is created
+
+Block level Attributes: @@ to represent block level attributes
+@@unique - to specify a unique constraint on a array of fields
+@@index - to specify an index on a array of fields
+
