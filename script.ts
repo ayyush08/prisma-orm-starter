@@ -179,10 +179,38 @@ async function main(){
     // // doesnot allow include and select similar to findmany
     // })
 
-    // console.log(await prisma.user.findFirst({
+
+    //Connect/Disconnect existing relations (also available in create)
+    // const preference = await prisma.userPreference.create({
+    //     data:{
+    //         emailUpdates:true
+    //     }
+    // }) //{ id: '03753574-249d-401d-838f-b5c36c989bcd', emailUpdates: true }
+    // const preference = await prisma.user.update({
     //     where:{
-    //         email:"ayushvy@gmail.com"}
-    // }));
+    //         email:"ayushvy@gmail.com"
+    //     },
+    //     data:{
+    //         userPreference:{
+    //             connect:{ //cpnnecting the existing userPreference to the user 
+    //disconnect - to remove connceted objeccts
+    //                 id:"03753574-249d-401d-838f-b5c36c989bcd"
+    //             }
+    //         }
+    //     }
+    // })
+    const preference = await prisma.user.findFirst({
+        where:{
+            name:"Ayush",
+            email:{
+                startsWith:"ayushvy"
+            }
+        },
+        include:{
+            userPreference:true
+        }
+    })
+    console.log(preference);
 
 }
 
