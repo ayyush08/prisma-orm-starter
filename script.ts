@@ -212,6 +212,10 @@ async function main(){
     })
     console.log(preference);
 
+
+    //------------------------------
+    //delete - delete one based on query
+    //deleteMany - delete many based on query
 }
 
 main()
