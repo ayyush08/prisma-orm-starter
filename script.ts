@@ -83,15 +83,55 @@ async function main(){
     //findMany - find all users that match the query as an array
     
     //Filtering and Distinctness
+    // const user = await prisma.user.findMany({
+    //     where:{
+    //         // name:"Ayush" or
+    //         // name: {equals: "Ayush"}
+    //         // name: { not:"Ayush"} // users NOT with this name
+    //         // name:{in:["Ayush","Curator"]} //users with these names
+    //         // name:{notIn:["Ayush","Curator"]} //users NOT with these names
+    //         // age: {lt:25} //less than 20 age (can also got gt,gte,lte)
+    //         // email: {
+    //         //     contains: "@gmail.com" //users with email containing this string
+    //         //     //endsWith , startWith
+    //         // }
+    //     },
+    //     // distinct:["name","age"] //this will return only one user with the name Ayush
+    //     // take:2, //how many you want to return
+    //     // skip: 1 // skipping 1st
+    //     orderBy: {
+    //         age:"desc"
+    //     }
+    // })
     const user = await prisma.user.findMany({
         where:{
-            name:"Ayush"
-        },
-        // distinct:["name","age"] //this will return only one user with the name Ayush
-        // take:2, //how many you want to return
-        // skip: 1 // skipping 1st
-        orderBy: {
-            age:"desc"
+            // AND:[ //combining multiple queries
+            //     {
+            //         email: {
+            //             endsWith: "@gmail.com"
+            //         }
+            //     },
+            //     {
+            //         name: "Ayush"
+            //     }
+            // ],
+            // OR:[ // returns all users that match given email OR age
+            //     {
+            //         email: {
+            //             startsWith:"curator"
+            //         }
+            //     },
+            //     {
+            //         age: 21
+            //     }
+            // ]
+            NOT:[ //negates everything inside
+                {
+                    email:{
+                        startsWith:"curator"
+                    }
+                }
+            ]
         }
     })
     console.log(user ? user : "No user found");
