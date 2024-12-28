@@ -103,8 +103,8 @@ async function main(){
     //         age:"desc"
     //     }
     // })
-    const user = await prisma.user.findMany({
-        where:{
+    // const user = await prisma.user.findMany({
+        // where:{
             // AND:[ //combining multiple queries
             //     {
             //         email: {
@@ -125,16 +125,44 @@ async function main(){
             //         age: 21
             //     }
             // ]
-            NOT:[ //negates everything inside
-                {
-                    email:{
-                        startsWith:"curator"
-                    }
-                }
-            ]
-        }
-    })
-    console.log(user ? user : "No user found");
+            // NOT:[ //negates everything inside
+            //     {
+            //         email:{
+            //             startsWith:"curator"
+            //         }
+            //     }
+            // ]
+    //     }
+    // })
+
+    //Relationship filtering
+    // const users = await prisma.user.findMany({
+        // where:{
+            //one to one
+            // userPreference:{
+            //     emailUpdates:true
+            // }
+            // writtenPosts:{
+                // every:{
+                //     title: "Test" //every post written by user with title Test (if none have title Test, it'll every user)
+                // }
+                //none: to return things with nothing of given
+                //some: to return things with atleast one of given
+            // }
+        // }
+    // })
+
+    // const users = await prisma.post.findMany({
+    //     where:{
+    //         author:{
+    //             is:{
+    //                 age:21// gives all posts with age 21
+    //             } // isNot is just opposite
+    //         }
+    //     }
+    // })
+
+    console.log(users ? users : "No user found");
 
 }
 
