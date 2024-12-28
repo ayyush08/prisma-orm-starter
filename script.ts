@@ -162,7 +162,27 @@ async function main(){
     //     }
     // })
 
-    console.log(users ? users : "No user found");
+    //------------------------------
+    //Update
+    //update - updates first user that matches the query
+    //updateMany - updates all users that match the query
+    // const users = await prisma.user.updateMany({
+    //     data:{
+    //         age:{
+    //             divide:10, //can do all arithmetic ops too
+
+    //         }
+    //     },
+    //     where:{
+    //         email:"ayushvy@gmail.com"
+    //     }
+    // // doesnot allow include and select similar to findmany
+    // })
+
+    // console.log(await prisma.user.findFirst({
+    //     where:{
+    //         email:"ayushvy@gmail.com"}
+    // }));
 
 }
 
