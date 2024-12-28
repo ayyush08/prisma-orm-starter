@@ -43,3 +43,4 @@ Block level Attributes: @@ to represent block level attributes
 @@unique - to specify a unique constraint on a array of fields
 @@index - to specify an index on a array of fields
 
+Enums:
