@@ -54,22 +54,47 @@ async function main(){
     //     data:[
     //         {
     //             name:"Ayush",
-    //             email:"ayush@gmail.com",
-    //             age:20
+    //             email:"ayush4@gmail.com",
+    //             age:21
     //         },
     //         {
     //             name:"Curator",
-    //             email:"curator@gmail.com",
-    //             age:21
+    //             email:"curator4@gmail.com",
+    //             age:22
     //         }
     //     ]
     //     //NOTE: cannot use select clause with createMany
     // })
-    // console.log(users);
     
-
-
-
+    
+    //------------------
+    //Read
+    // to read unique values
+    // const user = await prisma.user.findUnique({
+    //     where:{
+    //         // email:"curator@gmail.com"// find a user with this email
+    //         age_name:{//this is how we can use composite keys or in other word the @@unique constraint keys to find a unique user
+    //             age:20,
+    //             name:"Ayush"
+    //         }
+    //     }
+    // })
+    //findFirst - find the very first user that matches the query
+    //findMany - find all users that match the query as an array
+    
+    //Filtering and Distinctness
+    const user = await prisma.user.findMany({
+        where:{
+            name:"Ayush"
+        },
+        // distinct:["name","age"] //this will return only one user with the name Ayush
+        // take:2, //how many you want to return
+        // skip: 1 // skipping 1st
+        orderBy: {
+            age:"desc"
+        }
+    })
+    console.log(user ? user : "No user found");
 
 }
 

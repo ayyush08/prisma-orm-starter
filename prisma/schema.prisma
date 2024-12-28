@@ -17,7 +17,7 @@ model User {
   id            String @id @default(uuid())
   age           Int
   name          String
-  email         String
+  email         String @unique
   // isAdmin        Boolean -- can be replaced with enum roles
   role          Role   @default(BASIC) //basic user
   // preferences    Json
